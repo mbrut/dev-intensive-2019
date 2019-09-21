@@ -38,14 +38,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
         Log.d("M_MainActivity", "onCreate")
 
         benderImage = iv_bender
-        textTv = tv_text
+        textTv = textTxt
         messageEt = et_message
         sendBtn = iv_send
 
         val status = savedInstanceState?.getString("STATUS") ?: Bender.Status.NORMAL.name
         val question = savedInstanceState?.getString("QUESTION") ?: Bender.Question.NAME.name
-        Log.d("M_MainActivity", "onCreate - $status")
-        benderObj = Bender(Bender.Status.valueOf(status), Bender.Question.valueOf(question))
+        val mistkes = savedInstanceState?.getInt("MISTAKES") ?: 0
+        benderObj = Bender(Bender.Status.valueOf(status), Bender.Question.valueOf(question), mistkes)
         val (r, g, b) = benderObj.status.color
         benderImage.setColorFilter(Color.rgb(r, g, b), PorterDuff.Mode.MULTIPLY)
 
@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
         Log.d("M_MainActivity", "onCreate - ${benderObj.status.name}")
         outState.putString("STATUS", benderObj.status.name)
         outState.putString("QUESTION", benderObj.question.name)
+        outState.putInt("MISTAKES", benderObj.mistakes)
     }
 
 }
