@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
         Log.d("M_MainActivity", "onCreate")
 
         benderImage = iv_bender
-        textTv = textTxt
+        textTv = tv_text
         messageEt = et_message
         sendBtn = iv_send
 
