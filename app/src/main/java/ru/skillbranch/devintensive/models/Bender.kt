@@ -61,7 +61,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
     enum class Question(val question: String, val ansvers: List<String>) {
         NAME("Как меня зовут?", listOf("bender", "бендер")) {
             override fun validateHint(answer: String): String {
-                return if (answer.isBlank() or answer[0].isLowerCase())
+                return if (answer.isBlank() || answer[0].isLowerCase())
                     return "Имя должно начинаться с заглавной буквы"
                 else
                     ""
@@ -71,7 +71,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
         },
         PROFESSION("Назови мою профессию?", listOf("bender", "сгибальщик")) {
             override fun validateHint(answer: String): String {
-                return if (answer.isBlank() or answer[0].isUpperCase())
+                return if (answer.isBlank() || answer[0].isUpperCase())
                     "Профессия должна начинаться со строчной буквы"
                 else
                     ""
@@ -100,7 +100,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
         },
         SERAIL("Мой серийный номер?", listOf("2716057")) {
             override fun validateHint(answer: String): String {
-                return if ((answer.length != 7) or Regex("\\D+").containsMatchIn(answer))
+                return if ((answer.length != 7) || Regex("\\D+").containsMatchIn(answer))
                     "Серийный номер содержит только цифры, и их 7"
                 else
                     ""
