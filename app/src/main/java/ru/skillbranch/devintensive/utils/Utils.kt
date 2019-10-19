@@ -25,7 +25,7 @@ object Utils {
                 simbolMap.getOrElse("$it"){ "$it" }
             }
         }.joinToString("")}
-        return words.joinToString(divider)
+        return words.filter { it.isNotBlank() && it.isNotEmpty() }.joinToString(divider)
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Dev-intensive</string>
+    <string name="profile_rating_label">Рейтинг</string>
+    <string name="profile_respect_label">Уважение</string>
+    <string name="profile_hint_repository">Репозиторий</string>
+    <string name="profile_hint_about">О себе</string>
+    <string name="profile_hint_last_name">Фамилия</string>
+    <string name="profile_hint_first_name">Имя</string>
 </resources>
