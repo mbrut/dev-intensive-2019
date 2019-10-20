@@ -13,8 +13,7 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import androidx.lifecycle.ViewModelProviders
 import ru.skillbranch.devintensive.R
 import ru.skillbranch.devintensive.models.Profile
-import ru.skillbranch.devintensive.ui.custom.InitialsDrawable
-import ru.skillbranch.devintensive.veiwmodels.ProfileViewModel
+import ru.skillbranch.devintensive.viewmodels.ProfileViewModel
 
 
 class ProfileActivity : AppCompatActivity(){
