@@ -248,7 +248,4 @@
             android:src="@drawable/ic_eye_24dp"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
-
-
-
 </LinearLayout>

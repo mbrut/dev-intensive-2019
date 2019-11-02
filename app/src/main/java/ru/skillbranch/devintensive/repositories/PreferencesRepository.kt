@@ -37,11 +37,6 @@ object PreferencesRepository {
             putValue(RATING to rating)
             putValue(RESPECT to respect)
         }
-
-
-        for (entry in prefs.all.entries) {
-            Log.d("map values", entry.key + ": " + entry.value.toString())
-        }
     }
 
     fun getProfile(): Profile {
@@ -53,14 +48,12 @@ object PreferencesRepository {
             prefs.getInt(RATING, 0),
             prefs.getInt(RESPECT, 0)
         )
-        Log.d("M_PreferencesRepository", prof.asString())
         return prof
     }
 
     private fun putValue(pair: Pair<String, Any>) = with(prefs.edit()) {
         val key = pair.first
         val value = pair.second
-        Log.d("M_PreferencesRepository", pair.toString())
         when(value) {
             is String -> putString(key, value)
             is Int -> putInt(key, value)

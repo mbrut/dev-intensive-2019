@@ -14,14 +14,12 @@ class ProfileViewModel: ViewModel() {
     private val appTheme = MutableLiveData<Int>()
 
     init {
-        Log.d("M_ProfileViewModel", "init vm")
         profileData.value = repository.getProfile()
         appTheme.value = repository.getAppTheme()
     }
 
     override fun onCleared() {
         super.onCleared()
-        Log.d("M_ProfileViewModel", "onCleared")
     }
 
     fun getProfileData(): LiveData<Profile> = profileData

@@ -17,7 +17,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
     fun listenAnswer(answer: String): Pair<String, Triple<Int, Int, Int>> {
         val validationText = question.validateHint(answer)
-        Log.d("M_Bender", "$question")
         return when {
             validationText.isNotEmpty() and (question != Question.IDLE) -> "$validationText\n${question.question}" to status.color
             (question == Question.IDLE) or question.ansvers.contains(answer.toLowerCase()) -> {
@@ -37,7 +36,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
                  else {
                     status = status.nextStatus()
                 }
-                Log.d("M_Bender", "$wrongs")
                 "Это неправильный ответ$extraText\n${question.question}" to status.color
             }
         }
