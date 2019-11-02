@@ -34,9 +34,8 @@ class CircleImageView @JvmOverloads constructor(
 
 
     private val mBitmapPaint = Paint()
-//    private val mMaskBitmap = BitmapFactory.decodeResource(resources, R.drawable.mask_circle).extractAlpha()
-    private var mBitmap: Bitmap//this.drawable.toBitmap()
-    private var mBitmapShader: BitmapShader// = BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
+    private var mBitmap = this.drawable.toBitmap()
+    private var mBitmapShader = BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
 
     private val mStrokeBounds = RectF()
     private val mBitmapDrawBounds = RectF()
@@ -50,23 +49,13 @@ class CircleImageView @JvmOverloads constructor(
             a.recycle()
         }
 
-        val t = this.drawable
-
-        mBitmap = this.drawable.toBitmap()
-        mBitmapShader = BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-
         mBitmapPaint.shader = mBitmapShader
         mStrokePaint = Paint().apply {
             isAntiAlias = true
             color = getBorderColor()
-            strokeWidth = getBorderWidth()
+            strokeWidth = getBorderWidth().toFloat()
             style = Paint.Style.STROKE
         }
-
-
-
-        Log.d("M_CircleImageView", "1")
-
         setupBitmap()
     }
 
@@ -77,7 +66,6 @@ class CircleImageView @JvmOverloads constructor(
     }
 
     private fun updateBitmapSize() {
-        Log.d("M_CircleImageView", "2")
         val dx: Float
         val dy: Float
         val scale: Float
@@ -98,12 +86,12 @@ class CircleImageView @JvmOverloads constructor(
         mBitmapShader.setLocalMatrix(mShaderMatrix)
     }
 
-    @Dimension fun getBorderWidth(): Float {
-        return mBorderWidth
+    @Dimension fun getBorderWidth(): Int {
+        return mBorderWidth.toInt()
     }
 
-    fun setBorderWidth(@Dimension dp: Float) {
-        mBorderWidth = dp
+    fun setBorderWidth(@Dimension dp: Int) {
+        mBorderWidth = dp.toFloat()
     }
 
 
@@ -119,7 +107,6 @@ class CircleImageView @JvmOverloads constructor(
         mBorderColor = Color.parseColor(hex)
     }
 
-
     override fun onDraw(canvas: Canvas) {
         drawBitmap(canvas)
         drawBorder(canvas)
@@ -127,7 +114,6 @@ class CircleImageView @JvmOverloads constructor(
 
     private fun drawBorder(canvas: Canvas) {
         canvas.drawOval(mStrokeBounds, mStrokePaint)
-//        canvas.drawCircle(height / 2f, width / 2f, width / 2f - 1, mStrokePaint)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -159,13 +145,7 @@ class CircleImageView @JvmOverloads constructor(
     }
 
     private fun drawBitmap(canvas: Canvas) {
-        val t = Paint().apply {
-            isAntiAlias = true
-            color = getBorderColor()
-            strokeWidth = getBorderWidth()
-        }
         canvas.drawOval(mBitmapDrawBounds, mBitmapPaint)
-//        canvas.drawOval(mBitmapDrawBounds, t)
     }
 
 }
