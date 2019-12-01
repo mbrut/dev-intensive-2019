@@ -5,6 +5,11 @@ fun String.truncate(count: Int = 16): String {
     return if (cropped.length == count) "${cropped.trimEnd()}..." else cropped
 }
 
+fun String.shortFormat(): String {
+    return this.truncate(128)
+}
+
+
 fun String.stripHtml(): String {
     var text = Regex("</?[^>]*>").replace(this, "")
     text = Regex("(\\s|&nbsp;)+").replace(text, " ")

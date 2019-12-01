@@ -1,0 +1,9 @@
+<androidx.appcompat.widget.SearchView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_veiw"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="textPersonName"
+    android:maxWidth="9999dp"
+    app:queryHint="Введите имя пользователя">
+</androidx.appcompat.widget.SearchView>

@@ -1,6 +1,8 @@
 package ru.skillbranch.devintensive.models
 
 import java.util.*
+import ru.skillbranch.devintensive.models.data.Chat
+import ru.skillbranch.devintensive.models.data.User
 
 abstract class BaseMessage(
     val id: String,
